@@ -1,4 +1,3 @@
-
 # coding: utf-8
 
 # # Python Basics with Numpy (optional assignment)
@@ -36,8 +35,7 @@ test = "Hello World"
 
 # In[2]:
 
-print ("test: " + test)
-
+print("test: " + test)
 
 # **Expected output**:
 # test: Hello World
@@ -71,6 +69,7 @@ print ("test: " + test)
 
 import math
 
+
 def basic_sigmoid(x):
     """
     Compute sigmoid of x.
@@ -81,11 +80,11 @@ def basic_sigmoid(x):
     Return:
     s -- sigmoid(x)
     """
-    
+
     ### START CODE HERE ### (≈ 1 line of code)
-    s = 1/ (1 + math.exp(-x))
+    s = 1 / (1 + math.exp(-x))
     ### END CODE HERE ###
-    
+
     return s
 
 
@@ -93,8 +92,7 @@ def basic_sigmoid(x):
 
 basic_sigmoid(3)
 
-
-# **Expected Output**: 
+# **Expected Output**:
 # <table style = "width:40%">
 #     <tr>
 #     <td>** basic_sigmoid(3) **</td> 
@@ -109,8 +107,7 @@ basic_sigmoid(3)
 
 ### One reason why we use "numpy" instead of "math" in Deep Learning ###
 x = [1, 2, 3]
-basic_sigmoid(x) # you will see this give an error when you run it, because x is a vector.
-
+basic_sigmoid(x)  # you will see this give an error when you run it, because x is a vector.
 
 # In fact, if $ x = (x_1, x_2, ..., x_n)$ is a row vector then $np.exp(x)$ will apply the exponential function to every element of x. The output will thus be: $np.exp(x) = (e^{x_1}, e^{x_2}, ..., e^{x_n})$
 
@@ -120,8 +117,7 @@ import numpy as np
 
 # example of np.exp
 x = np.array([1, 2, 3])
-print(np.exp(x)) # result is (exp(1), exp(2), exp(3))
-
+print(np.exp(x))  # result is (exp(1), exp(2), exp(3))
 
 # Furthermore, if x is a vector, then a Python operation such as $s = x + 3$ or $s = \frac{1}{x}$ will output s as a vector of the same size as x.
 
@@ -129,10 +125,9 @@ print(np.exp(x)) # result is (exp(1), exp(2), exp(3))
 
 # example of vector operation
 x = np.array([1, 2, 3])
-print (x + 3)
+print(x + 3)
 
-
-# Any time you need more info on a numpy function, we encourage you to look at [the official documentation](https://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.exp.html). 
+# Any time you need more info on a numpy function, we encourage you to look at [the official documentation](https://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.exp.html).
 # 
 # You can also create a new cell in the notebook and write `np.exp?` (for example) to get quick access to the documentation.
 # 
@@ -155,7 +150,8 @@ print (x + 3)
 
 # GRADED FUNCTION: sigmoid
 
-import numpy as np # this means you can access numpy functions by writing np.function() instead of numpy.function()
+import numpy as np  # this means you can access numpy functions by writing np.function() instead of numpy.function()
+
 
 def sigmoid(x):
     """
@@ -167,11 +163,11 @@ def sigmoid(x):
     Return:
     s -- sigmoid(x)
     """
-    
+
     ### START CODE HERE ### (≈ 1 line of code)
-    s = 1/(1+np.exp(-x))
+    s = 1 / (1 + np.exp(-x))
     ### END CODE HERE ###
-    
+
     return s
 
 
@@ -214,19 +210,19 @@ def sigmoid_derivative(x):
     Return:
     ds -- Your computed gradient.
     """
-    
+
     ### START CODE HERE ### (≈ 2 lines of code)
     s = 1 / (1 + np.exp(-x))
     ds = s * (1 - s)
     ### END CODE HERE ###
-    
+
     return ds
 
 
 # In[12]:
 
 x = np.array([1, 2, 3])
-print ("sigmoid_derivative(x) = " + str(sigmoid_derivative(x)))
+print("sigmoid_derivative(x) = " + str(sigmoid_derivative(x)))
 
 
 # **Expected Output**: 
@@ -268,30 +264,30 @@ def image2vector(image):
     Returns:
     v -- a vector of shape (length*height*depth, 1)
     """
-    
+
     ### START CODE HERE ### (≈ 1 line of code)
-    v = image.reshape(image.shape[0]*image.shape[1]*image.shape[2], 1)
+    v = image.reshape(image.shape[0] * image.shape[1] * image.shape[2], 1)
     ### END CODE HERE ###
-    
+
     return v
 
 
 # In[15]:
 
 # This is a 3 by 3 by 2 array, typically images will be (num_px_x, num_px_y,3) where 3 represents the RGB values
-image = np.array([[[ 0.67826139,  0.29380381],
-        [ 0.90714982,  0.52835647],
-        [ 0.4215251 ,  0.45017551]],
+image = np.array([[[0.67826139, 0.29380381],
+                   [0.90714982, 0.52835647],
+                   [0.4215251, 0.45017551]],
 
-       [[ 0.92814219,  0.96677647],
-        [ 0.85304703,  0.52351845],
-        [ 0.19981397,  0.27417313]],
+                  [[0.92814219, 0.96677647],
+                   [0.85304703, 0.52351845],
+                   [0.19981397, 0.27417313]],
 
-       [[ 0.60659855,  0.00533165],
-        [ 0.10820313,  0.49978937],
-        [ 0.34144279,  0.94630077]]])
+                  [[0.60659855, 0.00533165],
+                   [0.10820313, 0.49978937],
+                   [0.34144279, 0.94630077]]])
 
-print ("image2vector(image) = " + str(image2vector(image)))
+print("image2vector(image) = " + str(image2vector(image)))
 
 
 # **Expected Output**: 
@@ -356,11 +352,11 @@ def normalizeRows(x):
     Returns:
     x -- The normalized (by row) numpy matrix. You are allowed to modify x.
     """
-    
+
     ### START CODE HERE ### (≈ 2 lines of code)
     # Compute x_norm as the norm 2 of x. Use np.linalg.norm(..., ord = 2, axis = ..., keepdims = True)
-    x_norm = np.linalg.norm(x, axis = 1, keepdims = True)
-    
+    x_norm = np.linalg.norm(x, axis=1, keepdims=True)
+
     # Divide x by its norm.
     x = x / x_norm
     ### END CODE HERE ###
@@ -442,19 +438,19 @@ def softmax(x):
     Returns:
     s -- A numpy matrix equal to the softmax of x, of shape (n,m)
     """
-    
+
     ### START CODE HERE ### (≈ 3 lines of code)
     # Apply exp() element-wise to x. Use np.exp(...).
     x_exp = np.exp(x)
 
     # Create a vector x_sum that sums each row of x_exp. Use np.sum(..., axis = 1, keepdims = True).
-    x_sum = np.sum(x_exp,axis = 1,keepdims = True)
-    
+    x_sum = np.sum(x_exp, axis=1, keepdims=True)
+
     # Compute softmax(x) by dividing x_exp by x_sum. It should automatically use numpy broadcasting.
     s = x_exp / x_sum
 
     ### END CODE HERE ###
-    
+
     return s
 
 
@@ -462,9 +458,8 @@ def softmax(x):
 
 x = np.array([
     [9, 2, 5, 0, 0],
-    [7, 5, 0, 0 ,0]])
+    [7, 5, 0, 0, 0]])
 print("softmax(x) = " + str(softmax(x)))
-
 
 # **Expected Output**:
 # 
@@ -510,37 +505,36 @@ x2 = [9, 2, 2, 9, 0, 9, 2, 5, 0, 0, 9, 2, 5, 0, 0]
 tic = time.process_time()
 dot = 0
 for i in range(len(x1)):
-    dot+= x1[i]*x2[i]
+    dot += x1[i] * x2[i]
 toc = time.process_time()
-print ("dot = " + str(dot) + "\n ----- Computation time = " + str(1000*(toc - tic)) + "ms")
+print("dot = " + str(dot) + "\n ----- Computation time = " + str(1000 * (toc - tic)) + "ms")
 
 ### CLASSIC OUTER PRODUCT IMPLEMENTATION ###
 tic = time.process_time()
-outer = np.zeros((len(x1),len(x2))) # we create a len(x1)*len(x2) matrix with only zeros
+outer = np.zeros((len(x1), len(x2)))  # we create a len(x1)*len(x2) matrix with only zeros
 for i in range(len(x1)):
     for j in range(len(x2)):
-        outer[i,j] = x1[i]*x2[j]
+        outer[i, j] = x1[i] * x2[j]
 toc = time.process_time()
-print ("outer = " + str(outer) + "\n ----- Computation time = " + str(1000*(toc - tic)) + "ms")
+print("outer = " + str(outer) + "\n ----- Computation time = " + str(1000 * (toc - tic)) + "ms")
 
 ### CLASSIC ELEMENTWISE IMPLEMENTATION ###
 tic = time.process_time()
 mul = np.zeros(len(x1))
 for i in range(len(x1)):
-    mul[i] = x1[i]*x2[i]
+    mul[i] = x1[i] * x2[i]
 toc = time.process_time()
-print ("elementwise multiplication = " + str(mul) + "\n ----- Computation time = " + str(1000*(toc - tic)) + "ms")
+print("elementwise multiplication = " + str(mul) + "\n ----- Computation time = " + str(1000 * (toc - tic)) + "ms")
 
 ### CLASSIC GENERAL DOT PRODUCT IMPLEMENTATION ###
-W = np.random.rand(3,len(x1)) # Random 3*len(x1) numpy array
+W = np.random.rand(3, len(x1))  # Random 3*len(x1) numpy array
 tic = time.process_time()
 gdot = np.zeros(W.shape[0])
 for i in range(W.shape[0]):
     for j in range(len(x1)):
-        gdot[i] += W[i,j]*x1[j]
+        gdot[i] += W[i, j] * x1[j]
 toc = time.process_time()
-print ("gdot = " + str(gdot) + "\n ----- Computation time = " + str(1000*(toc - tic)) + "ms")
-
+print("gdot = " + str(gdot) + "\n ----- Computation time = " + str(1000 * (toc - tic)) + "ms")
 
 # In[21]:
 
@@ -549,27 +543,27 @@ x2 = [9, 2, 2, 9, 0, 9, 2, 5, 0, 0, 9, 2, 5, 0, 0]
 
 ### VECTORIZED DOT PRODUCT OF VECTORS ###
 tic = time.process_time()
-dot = np.dot(x1,x2)
+dot = np.dot(x1, x2)
 toc = time.process_time()
-print ("dot = " + str(dot) + "\n ----- Computation time = " + str(1000*(toc - tic)) + "ms")
+print("dot = " + str(dot) + "\n ----- Computation time = " + str(1000 * (toc - tic)) + "ms")
 
 ### VECTORIZED OUTER PRODUCT ###
 tic = time.process_time()
-outer = np.outer(x1,x2)
+outer = np.outer(x1, x2)
 toc = time.process_time()
-print ("outer = " + str(outer) + "\n ----- Computation time = " + str(1000*(toc - tic)) + "ms")
+print("outer = " + str(outer) + "\n ----- Computation time = " + str(1000 * (toc - tic)) + "ms")
 
 ### VECTORIZED ELEMENTWISE MULTIPLICATION ###
 tic = time.process_time()
-mul = np.multiply(x1,x2)
+mul = np.multiply(x1, x2)
 toc = time.process_time()
-print ("elementwise multiplication = " + str(mul) + "\n ----- Computation time = " + str(1000*(toc - tic)) + "ms")
+print("elementwise multiplication = " + str(mul) + "\n ----- Computation time = " + str(1000 * (toc - tic)) + "ms")
 
 ### VECTORIZED GENERAL DOT PRODUCT ###
 tic = time.process_time()
-dot = np.dot(W,x1)
+dot = np.dot(W, x1)
 toc = time.process_time()
-print ("gdot = " + str(dot) + "\n ----- Computation time = " + str(1000*(toc - tic)) + "ms")
+print("gdot = " + str(dot) + "\n ----- Computation time = " + str(1000 * (toc - tic)) + "ms")
 
 
 # As you may have noticed, the vectorized implementation is much cleaner and more efficient. For bigger vectors/matrices, the differences in running time become even bigger. 
@@ -598,11 +592,11 @@ def L1(yhat, y):
     Returns:
     loss -- the value of the L1 loss function defined above
     """
-    
+
     ### START CODE HERE ### (≈ 1 line of code)
-    loss = np.sum(np.abs(yhat-y),axis = 0)
+    loss = np.sum(np.abs(yhat - y), axis=0)
     ### END CODE HERE ###
-    
+
     return loss
 
 
@@ -610,7 +604,7 @@ def L1(yhat, y):
 
 yhat = np.array([.9, 0.2, 0.1, .4, .9])
 y = np.array([1, 0, 0, 1, 1])
-print("L1 = " + str(L1(yhat,y)))
+print("L1 = " + str(L1(yhat, y)))
 
 
 # **Expected Output**:
@@ -641,11 +635,11 @@ def L2(yhat, y):
     Returns:
     loss -- the value of the L2 loss function defined above
     """
-    
+
     ### START CODE HERE ### (≈ 1 line of code)
-    loss = np.dot(np.abs(y-yhat), np.abs(y-yhat))
+    loss = np.dot(np.abs(y - yhat), np.abs(y - yhat))
     ### END CODE HERE ###
-    
+
     return loss
 
 
@@ -653,10 +647,9 @@ def L2(yhat, y):
 
 yhat = np.array([.9, 0.2, 0.1, .4, .9])
 y = np.array([1, 0, 0, 1, 1])
-print("L2 = " + str(L2(yhat,y)))
+print("L2 = " + str(L2(yhat, y)))
 
-
-# **Expected Output**: 
+# **Expected Output**:
 # <table style="width:20%">
 #      <tr> 
 #        <td> **L2** </td> 
